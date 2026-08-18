@@ -1,13 +1,10 @@
-# FinSight Investment Platform — single web service for Render
-# Deploy this folder as the root (or set Root Directory to FinSigh_tInvestmentPlatform)
-
 services:
   - type: web
     name: finsight-investment-platform
     runtime: python
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    startCommand: bash start.sh
     envVars:
       - key: PYTHON_VERSION
         value: "3.12.0"
