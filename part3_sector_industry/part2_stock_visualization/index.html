@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!-- © All rights reserved FinSight prepared by Rudra Nath Sinha -->
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+    <meta name="author" content="Rudra Nath Sinha — FinSight" />
+  <meta name="copyright" content="© All rights reserved FinSight prepared by Rudra Nath Sinha" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stock Visualization | FinSight</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:'#eef9ff',100:'#d9f1ff',200:'#bce7ff',300:'#8ed8ff',
+              400:'#59c0ff',500:'#339fff',600:'#1a7ff5',700:'#1368e1',
+              800:'#1654b6',900:'#18488f',950:'#132d57'
+            }
+          },
+          fontFamily: { sans: ['Inter','system-ui','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="h-full bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased transition-colors duration-300">
+  <div style="background:#0c4a6e;color:#e0f2fe;text-align:center;font-size:11px;padding:6px;">Sector & Industry Intelligence · not country ranking · FinSight</div>
+
+<div class="flex h-full overflow-hidden">
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="w-64 flex-shrink-0 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col z-30">
+        <div class="px-5 py-5 border-b border-slate-200 dark:border-slate-800">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="flex items-center gap-3 flex-1 min-w-0">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-lg shadow-brand-500/30 flex-shrink-0">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <div class="min-w-0">
+            <h1 class="text-lg font-bold tracking-tight">FinSight</h1>
+            <p class="text-[10px] uppercase tracking-widest text-slate-500">Market Intelligence</p>
+          </div>
+        </a>
+        <button type="button" id="sidebarCloseBtn" class="sidebar-close-btn" aria-label="Close menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+      <p class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Platform</p>
+      <a href="../part1_sector_industry/index.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        <span>Sector & Industry</span>
+      </a>
+      <a href="index.html" class="nav-item active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium">
+        <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
+        <span>Stock Visualization</span>
+      </a>
+      <a href="../part3_stock_analysis/index.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <svg class="w-5 h-5 text-violet-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        <span>Stock Analysis</span>
+      </a>
+    </nav>
+      
+      <div class="my-3 border-t border-slate-200 dark:border-slate-800"></div>
+      <p class="px-3 mb-1 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Trust</p>
+      <a href="../methodology.html" class="nav-item flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">Methodology</a>
+      <a href="../disclaimer.html" class="nav-item flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">Disclaimer</a>
+
+    <div class="mt-auto px-4 py-3 border-t border-slate-200 dark:border-slate-800">
+      <p class="text-[10px] leading-snug text-center text-slate-400">© All rights reserved FinSight<br>prepared by Rudra Nath Sinha</p>
+    </div>
+  </aside>
+
+  <main class="flex-1 flex flex-col overflow-hidden">
+    <header class="flex-shrink-0 h-14 px-4 md:px-6 flex items-center justify-between bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+      <div class="flex items-center gap-3">
+        <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <h2 class="text-base font-semibold">Stock Data Visualization</h2>
+      </div>
+      <div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-medium">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> 5,480 Stocks
+      </span>
+<div class="flex items-center gap-2">      <span id="backendStatus" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-500">Backend…</span>
+      <button id="themeToggle" type="button" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition border border-slate-200 dark:border-slate-700" title="Toggle dark / light mode" aria-label="Toggle theme">
+        <svg class="w-4 h-4 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        <span class="hidden sm:inline dark:hidden">Dark</span>
+        <span class="hidden sm:dark:inline">Light</span>
+      </button>
+      </div>
+      </div>
+    </header>
+
+    <!-- TOP TABS -->
+    <div class="flex-shrink-0 task-bar px-4 md:px-6">
+      <div class="flex gap-1 overflow-x-auto py-2 scrollbar-hide" id="mainTabs">
+        <button class="tab-btn active" data-tab="overview">Overview</button>
+        <button class="tab-btn" data-tab="sectorwise">Sector & Industry Wise</button>
+        <button class="tab-btn" data-tab="insights">Insights</button>
+        <button class="tab-btn" data-tab="comparison">Ranking Comparison</button>
+      </div>
+    </div>
+
+    <div id="content" class="flex-1 overflow-y-auto p-4 md:p-6">
+      <div id="loader" class="flex items-center justify-center h-64">
+        <div class="text-center">
+          <div class="inline-block w-10 h-10 border-4 border-brand-500 border-t-transparent rounded-full animate-spin mb-3"></div>
+          <p class="text-sm text-slate-500">Loading stock universe...</p>
+        </div>
+      </div>
+      <div id="panel-overview" class="tab-panel hidden"></div>
+      <div id="panel-sectorwise" class="tab-panel hidden"></div>
+      <div id="panel-comparison" class="tab-panel hidden"></div>
+      <div id="panel-insights" class="tab-panel hidden"></div>
+    </div>
+  </main>
+</div>
+
+<!-- Detail Modal -->
+<div id="detailModal" class="modal-backdrop">
+  <div class="modal-panel p-6" style="width:min(640px,94vw)">
+    <div class="flex items-start justify-between mb-4">
+      <div>
+        <h3 id="modalTitle" class="text-xl font-bold"></h3>
+        <p id="modalSub" class="text-sm text-slate-500 mt-0.5"></p>
+      </div>
+      <button id="modalClose" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div id="modalBody" class="space-y-4"></div>
+  </div>
+</div>
+
+<script src="../shared/theme.js"></script>
+<script src="../shared/live.js"></script>
+<script src="../shared/ui.js"></script>
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  if (window.FinSightUI) {
+    var host = document.getElementById('content') || document.querySelector('main');
+    FinSightUI.injectFooterDisclaimer(host);
+  }
+});
+</script>
+</body>
+</html>

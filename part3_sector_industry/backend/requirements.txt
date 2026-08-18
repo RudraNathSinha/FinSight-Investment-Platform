@@ -1,0 +1,5 @@
+flask>=3.0
+yfinance>=0.2.40
+pandas>=2.0
+weasyprint>=62.0
+cachetools>=5.3

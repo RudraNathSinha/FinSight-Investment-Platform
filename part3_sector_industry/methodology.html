@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- © All rights reserved FinSight prepared by Rudra Nath Sinha -->
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="author" content="Rudra Nath Sinha — FinSight" />
+  <meta name="copyright" content="© All rights reserved FinSight prepared by Rudra Nath Sinha" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Methodology | FinSight</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{brand:{500:'#339fff',600:'#1a7ff5',700:'#1368e1'}},fontFamily:{sans:['Inter','system-ui','sans-serif']}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/styles.css">
+</head>
+<body class="min-h-full bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased">
+  <header class="sticky top-0 z-20 bg-white/90 dark:bg-slate-900/90 backdrop-blur border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-3xl mx-auto px-4 h-14 flex items-center justify-between">
+      <a href="index.html" class="font-bold text-brand-600">← FinSight</a>
+      <div class="flex items-center gap-3">
+        <a href="disclaimer.html" class="text-xs text-slate-500 hover:text-brand-600">Disclaimer</a>
+        <button id="themeToggle" type="button" class="text-xs px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800">Theme</button>
+      </div>
+    </div>
+  </header>
+  <main class="max-w-3xl mx-auto px-4 py-8 prose-slate">
+    <p class="text-[11px] font-semibold uppercase tracking-wider text-brand-600 mb-2">Transparency</p>
+    <h1 class="text-3xl font-extrabold tracking-tight mb-2">How FinSight works</h1>
+    <p class="text-slate-600 dark:text-slate-400 mb-8">Plain-language methodology for long-term investors. This is an educational workspace — not formal research advice.</p>
+
+    <section class="card p-5 mb-5">
+      <h2 class="text-lg font-bold mb-2">1. Universe & hierarchy</h2>
+      <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Stocks are organised <strong>Sector → Industry → Stock</strong> using offline ranking workbooks built from multi-criteria decision methods (MCDM). Live quotes and financial statements are fetched separately via market data (yfinance through the FinSight Flask API).</p>
+    </section>
+
+    <section class="card p-5 mb-5">
+      <h2 class="text-lg font-bold mb-2">2. Ranking methods (MCDM ensemble)</h2>
+      <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-3">Industry and stock ranks combine several standard MCDM techniques (for example SAW, TOPSIS, VIKOR, GRA, WASPAS, COPRAS, and related scoring). In simple terms:</p>
+      <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2 list-disc pl-5">
+        <li>Each method scores names on the same set of quantitative factors (quality, growth, risk-style inputs as available in the ranking files).</li>
+        <li>Scores are normalised so methods can be compared.</li>
+        <li>An <strong>ensemble / blended rank</strong> summarises agreement across methods — useful for screening, not as a buy/sell call.</li>
+      </ul>
+      <p class="text-sm text-amber-800 dark:text-amber-200/90 mt-3 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-lg p-3">Ranks can change when inputs or peer sets change. Always open the full stock analysis before acting.</p>
+    </section>
+
+    <section class="card p-5 mb-5">
+      <h2 class="text-lg font-bold mb-2">3. Financial statements & ratios</h2>
+      <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Income statement, balance sheet, cash flow and ratio panels use reported annual/quarterly history from the live feed. Growth rates are year-over-year where both periods exist. Missing lines are common for some tickers — FinSight shows an explicit empty state rather than inventing numbers.</p>
+    </section>
+
+    <section class="card p-5 mb-5">
+      <h2 class="text-lg font-bold mb-2">4. Valuation (DCF-style)</h2>
+      <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-2">The valuation module builds an illustrative discounted free-cash-flow path:</p>
+      <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2 list-disc pl-5">
+        <li><strong>Base revenue / FCF</strong> from the latest available annuals.</li>
+        <li><strong>Near-term growth</strong> faded toward a long-run terminal growth rate.</li>
+        <li><strong>Discount rate</strong> anchored to published cost-of-capital context (Damodaran-linked illustrative rate), not a company-specific CAPM audit.</li>
+        <li><strong>Terminal value</strong> via Gordon growth; equity value = enterprise PV − net debt.</li>
+      </ul>
+      <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">Asset and market cross-checks (book, PE / EV multiples) are shown for triangulation. Results are <strong>scenario illustrations</strong>.</p>
+    </section>
+
+    <section class="card p-5 mb-5">
+      <h2 class="text-lg font-bold mb-2">5. Financial model pack</h2>
+      <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">The three-statement view links historical income, balance sheet and cash flow. The DCF block mirrors valuation. The LBO block is a <strong>teaching sketch</strong> (entry EV, debt schedule, exit multiple, MOIC/IRR) — not a live deal model.</p>
+    </section>
+
+    <section class="card p-5 mb-5">
+      <h2 class="text-lg font-bold mb-2">6. Reports</h2>
+      <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Equity Research, Valuation and Financial Model reports assemble the same panels into printable HTML/PDF. They inherit live-data limits and model assumptions. Always verify against primary filings.</p>
+    </section>
+
+    <section class="card p-5 mb-8 border-brand-500/30">
+      <h2 class="text-lg font-bold mb-2">Intended use</h2>
+      <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">FinSight helps long-term investors <strong>structure the universe, read fundamentals, and prepare questions</strong> before speaking with a broker or advisor. It does not replace regulated advice.</p>
+      <p class="text-xs text-slate-400 mt-4">© All rights reserved FinSight prepared by Rudra Nath Sinha</p>
+    </section>
+  </main>
+  <script src="shared/theme.js"></script>
+</body>
+</html>

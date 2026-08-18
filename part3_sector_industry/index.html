@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<!-- © All rights reserved FinSight prepared by Rudra Nath Sinha -->
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="author" content="Rudra Nath Sinha — FinSight" />
+  <meta name="copyright" content="© All rights reserved FinSight prepared by Rudra Nath Sinha" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sector & Industry Intelligence | FinSight</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:'#eef9ff',100:'#d9f1ff',200:'#bce7ff',300:'#8ed8ff',
+              400:'#59c0ff',500:'#339fff',600:'#1a7ff5',700:'#1368e1',
+              800:'#1654b6',900:'#18488f',950:'#132d57'
+            }
+          },
+          fontFamily: { sans: ['Inter','system-ui','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/styles.css">
+</head>
+<!-- FinSight Part 3 -->
+<body class="h-full bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased transition-colors duration-300">
+  <div style="background:#0c4a6e;color:#e0f2fe;text-align:center;font-size:12px;padding:8px 12px;">
+    <strong>Sector &amp; Industry Intelligence</strong> — sector ranking and stock rank within sector (not country ranking) · FinSight educational workspace ·
+    <a href="http://127.0.0.1:8000/" style="color:#bae6fd;text-decoration:underline;">FinSight Home</a>
+  </div>
+
+<div class="flex h-full overflow-hidden">
+  <aside id="sidebar" class="w-64 flex-shrink-0 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col z-30">
+    <div class="px-5 py-5 border-b border-slate-200 dark:border-slate-800">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-3 flex-1 min-w-0">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-lg shadow-brand-500/30 flex-shrink-0">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <div class="min-w-0">
+            <h1 class="text-lg font-bold tracking-tight">FinSight</h1>
+            <p class="text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400">Market Intelligence</p>
+          </div>
+        </a>
+        <button type="button" id="sidebarCloseBtn" class="sidebar-close-btn" aria-label="Close menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+      <p class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Platform</p>
+      <a href="index.html" class="nav-item active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium">
+        <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="part1_sector_industry/index.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        <span>Sector & Industry</span>
+      </a>
+      <a href="part2_stock_visualization/index.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
+        <span>Stock Visualization</span>
+      </a>
+      <a href="part3_stock_analysis/index.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <svg class="w-5 h-5 text-violet-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        <span>Stock Analysis</span>
+      </a>
+      <div class="my-4 border-t border-slate-200 dark:border-slate-800"></div>
+      <p class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Resources</p>
+      <a href="methodology.html" class="nav-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <span class="text-brand-500 text-xs font-bold w-5 text-center">M</span>
+        <span>Methodology</span>
+      </a>
+      <a href="disclaimer.html" class="nav-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <span class="text-rose-500 text-xs font-bold w-5 text-center">!</span>
+        <span>Disclaimer</span>
+      </a>
+      <div class="my-4 border-t border-slate-200 dark:border-slate-800"></div>
+      <p class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Data Coverage</p>
+      <div class="px-3 space-y-2 text-xs text-slate-500">
+        <div class="flex justify-between"><span>Sectors</span><span class="font-semibold text-slate-700 dark:text-slate-300">11</span></div>
+        <div class="flex justify-between"><span>Industries</span><span class="font-semibold text-slate-700 dark:text-slate-300">145</span></div>
+        <div class="flex justify-between"><span>Stocks</span><span class="font-semibold text-slate-700 dark:text-slate-300">~5,480</span></div>
+      </div>
+    </nav>
+    <div class="mt-auto px-4 py-3 border-t border-slate-200 dark:border-slate-800">
+      <p class="text-[10px] leading-snug text-center text-slate-400">© All rights reserved FinSight<br>prepared by Rudra Nath Sinha</p>
+    </div>
+  </aside>
+
+  <main class="flex-1 flex flex-col overflow-hidden">
+    <header class="flex-shrink-0 h-14 px-4 md:px-6 flex items-center justify-between bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+      <div class="flex items-center gap-3">
+        <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <h2 class="text-base font-semibold">Welcome to FinSight Analytics</h2>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-medium">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Live Data
+        </span>
+        <span id="backendStatus" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-500">Backend…</span>
+        <button id="themeToggle" type="button" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition border border-slate-200 dark:border-slate-700" title="Toggle dark / light mode" aria-label="Toggle theme">
+          <svg class="w-4 h-4 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <span class="hidden sm:inline dark:hidden">Dark</span>
+          <span class="hidden sm:dark:inline">Light</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="flex-1 overflow-y-auto p-4 md:p-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-10">
+          <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-3">Sector & Industry Intelligence</h1>
+          <p class="text-slate-500 dark:text-slate-400 text-lg max-w-2xl mx-auto">
+            Sector rankings · Industry deep-dives · Stock-level analysis powered by multi-criteria decision models (SAW, TOPSIS, VIKOR, GRA, WASPAS, COPRAS, PCA).
+          </p>
+        </div>
+
+        <!-- Guided investor path -->
+        <section class="mb-12" id="guidedPath" aria-labelledby="guided-heading">
+          <div class="rounded-2xl border border-slate-200/80 dark:border-slate-700/80 bg-gradient-to-br from-white via-slate-50 to-brand-50/40 dark:from-slate-900 dark:via-slate-900 dark:to-brand-950/30 shadow-sm overflow-hidden">
+            <div class="px-6 pt-6 pb-2 md:px-8 md:pt-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+              <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 rounded-full bg-brand-500/10 text-brand-700 dark:text-brand-300 px-3 py-1 text-[11px] font-semibold tracking-wide uppercase mb-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+                  Recommended workflow
+                </div>
+                <h2 id="guided-heading" class="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                  From market map to investment memo
+                </h2>
+                <p class="mt-2 text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+                  A structured four-step path for long-term investors: establish sector context, shortlist names, interrogate fundamentals, then export a professional report — before engaging a broker or adviser.
+                </p>
+              </div>
+              <div class="flex flex-wrap items-center gap-3 shrink-0 pb-1">
+                <a href="methodology.html" class="text-xs font-medium text-slate-500 hover:text-brand-600 dark:hover:text-brand-400">Methodology</a>
+                <span class="text-slate-300 dark:text-slate-600">·</span>
+                <a href="disclaimer.html" class="text-xs font-medium text-slate-500 hover:text-rose-500">Disclaimer</a>
+              </div>
+            </div>
+
+            <ol class="grid sm:grid-cols-2 xl:grid-cols-4 gap-0 border-t border-slate-200/70 dark:border-slate-700/70 mt-4">
+              <li class="relative p-5 md:p-6 border-b sm:border-b-0 sm:border-r border-slate-200/70 dark:border-slate-700/70 group hover:bg-white/70 dark:hover:bg-slate-800/40 transition">
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-white text-sm font-bold shadow-md shadow-brand-600/25">01</span>
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-brand-600/80">Sector lens</span>
+                </div>
+                <h3 class="font-bold text-base text-slate-900 dark:text-white mb-1.5">Scan ranked sectors</h3>
+                <p class="text-xs leading-relaxed text-slate-500 dark:text-slate-400 mb-4">
+                  Review multi-factor sector and industry rankings to see where relative strength and risk concentrate in the universe.
+                </p>
+                <a href="part1_sector_industry/index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 group-hover:gap-2.5 transition-all">
+                  Open Sector &amp; Industry <span aria-hidden="true">→</span>
+                </a>
+              </li>
+
+              <li class="relative p-5 md:p-6 border-b sm:border-b-0 xl:border-r border-slate-200/70 dark:border-slate-700/70 group hover:bg-white/70 dark:hover:bg-slate-800/40 transition">
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-white text-sm font-bold shadow-md shadow-emerald-600/25">02</span>
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-emerald-600/80">Universe</span>
+                </div>
+                <h3 class="font-bold text-base text-slate-900 dark:text-white mb-1.5">Explore the stock hierarchy</h3>
+                <p class="text-xs leading-relaxed text-slate-500 dark:text-slate-400 mb-4">
+                  Navigate sector → industry → stock maps, ranked tables and comparisons to build a focused shortlist of candidates.
+                </p>
+                <a href="part2_stock_visualization/index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 group-hover:gap-2.5 transition-all">
+                  Open Stock Visualization <span aria-hidden="true">→</span>
+                </a>
+              </li>
+
+              <li class="relative p-5 md:p-6 border-b sm:border-b-0 sm:border-r border-slate-200/70 dark:border-slate-700/70 group hover:bg-white/70 dark:hover:bg-slate-800/40 transition">
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-violet-600 text-white text-sm font-bold shadow-md shadow-violet-600/25">03</span>
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-violet-600/80">Fundamentals</span>
+                </div>
+                <h3 class="font-bold text-base text-slate-900 dark:text-white mb-1.5">Interrogate the company</h3>
+                <p class="text-xs leading-relaxed text-slate-500 dark:text-slate-400 mb-4">
+                  Study overview, statements, ratios, valuation and ranking detail for a single ticker with live-assisted data where available.
+                </p>
+                <a href="part3_stock_analysis/index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-violet-600 group-hover:gap-2.5 transition-all">
+                  Open Stock Analysis <span aria-hidden="true">→</span>
+                </a>
+              </li>
+
+              <li class="relative p-5 md:p-6 group hover:bg-white/70 dark:hover:bg-slate-800/40 transition">
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-600 text-white text-sm font-bold shadow-md shadow-amber-600/25">04</span>
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-amber-600/80">Output</span>
+                </div>
+                <h3 class="font-bold text-base text-slate-900 dark:text-white mb-1.5">Generate the report</h3>
+                <p class="text-xs leading-relaxed text-slate-500 dark:text-slate-400 mb-4">
+                  Export equity research, valuation and financial-model style memos grounded in the same analysis you just completed.
+                </p>
+                <a href="part3_stock_analysis/index.html#reports" class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-700 dark:text-amber-400 group-hover:gap-2.5 transition-all">
+                  Go to Generate Reports <span aria-hidden="true">→</span>
+                </a>
+              </li>
+            </ol>
+
+            <div class="px-6 py-3 md:px-8 border-t border-slate-200/70 dark:border-slate-700/70 bg-slate-50/80 dark:bg-slate-900/50">
+              <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                <strong class="font-semibold text-slate-600 dark:text-slate-300">Educational use only.</strong>
+                FinSight supports research and learning; it is not investment advice, a recommendation, or a substitute for licensed advice. Always verify with primary filings.
+                <span class="text-slate-400"> © All rights reserved FinSight prepared by Rudra Nath Sinha</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          <a href="part1_sector_industry/index.html" class="group card p-6 hover:shadow-lg hover:border-brand-300 dark:hover:border-brand-700 transition-all">
+            <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950 flex items-center justify-center mb-4 group-hover:scale-110 transition">
+              <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold mb-1">Sector & Industry</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Interactive dashboards, rank tables, deep-dives, multi-entity comparison and auto-generated insights across 11 sectors and 145 industries.</p>
+            <span class="text-brand-600 text-sm font-semibold group-hover:underline">Open Module →</span>
+          </a>
+
+          <a href="part2_stock_visualization/index.html" class="group card p-6 hover:shadow-lg hover:border-emerald-300 dark:hover:border-emerald-700 transition-all">
+            <div class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950 flex items-center justify-center mb-4 group-hover:scale-110 transition">
+              <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold mb-1">Stock Visualization</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Hierarchical sector→industry→stock explorer, heatmaps, side-by-side stock comparison (up to 20), and stock-level insights for ~5,480 tickers.</p>
+            <span class="text-emerald-600 text-sm font-semibold group-hover:underline">Open Module →</span>
+          </a>
+
+          <a href="part3_stock_analysis/index.html" class="group card p-6 hover:shadow-lg hover:border-violet-300 dark:hover:border-violet-700 transition-all">
+            <div class="w-12 h-12 rounded-xl bg-violet-50 dark:bg-violet-950 flex items-center justify-center mb-4 group-hover:scale-110 transition">
+              <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold mb-1">Stock Analysis</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Full company profiles, financials, forecasts, statistics, dividends, multi-stock comparison, and downloadable equity research / valuation reports.</p>
+            <span class="text-violet-600 text-sm font-semibold group-hover:underline">Open Module →</span>
+          </a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="card p-4 text-center">
+            <p class="text-2xl font-extrabold text-brand-600">11</p>
+            <p class="text-xs text-slate-500 mt-1">Sectors Ranked</p>
+          </div>
+          <div class="card p-4 text-center">
+            <p class="text-2xl font-extrabold text-emerald-600">145</p>
+            <p class="text-xs text-slate-500 mt-1">Industries Ranked</p>
+          </div>
+          <div class="card p-4 text-center">
+            <p class="text-2xl font-extrabold text-violet-600">5,480</p>
+            <p class="text-xs text-slate-500 mt-1">Stocks Covered</p>
+          </div>
+          <div class="card p-4 text-center">
+            <p class="text-2xl font-extrabold text-amber-600">7</p>
+            <p class="text-xs text-slate-500 mt-1">MCDM Methods</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="shared/live.js"></script>
+<script src="shared/ui.js"></script>
+<script src="shared/theme.js"></script>
+<script>
+  document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
+    const s = document.getElementById('sidebar');
+    if (!s) return;
+    if (s.classList.contains('open')) {
+      s.classList.remove('open');
+      document.body.classList.remove('sidebar-open');
+    } else {
+      s.classList.add('open');
+      document.body.classList.add('sidebar-open');
+    }
+  });
+  document.getElementById('sidebarCloseBtn')?.addEventListener('click', () => {
+    document.getElementById('sidebar')?.classList.remove('open');
+    document.body.classList.remove('sidebar-open');
+  });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  if (window.FinSightUI) FinSightUI.injectFooterDisclaimer(document.querySelector('main .max-w-5xl') || document.querySelector('main'));
+  if (window.LiveAPI && LiveAPI.startBackendMonitor) LiveAPI.startBackendMonitor(15000);
+});
+</script>
+
+
+
+  <div style="border-top:1px solid #334155;padding:10px 16px;text-align:center;font-size:11px;color:#94a3b8;background:#020617;">
+    FinSight is an educational analytics workspace. It is not SEBI-registered research or personalised investment advice. Data may be incomplete. Models are illustrative. © All rights reserved FinSight prepared by Rudra Nath Sinha.
+  </div>
+</body>
+</html>

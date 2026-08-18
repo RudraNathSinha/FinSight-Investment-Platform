@@ -1,0 +1,447 @@
+[
+  {
+    "rank": 1,
+    "country": "USA",
+    "final_score": 70.3015
+  },
+  {
+    "rank": 2,
+    "country": "DEU",
+    "final_score": 66.5945
+  },
+  {
+    "rank": 3,
+    "country": "CAN",
+    "final_score": 66.2144
+  },
+  {
+    "rank": 4,
+    "country": "CHE",
+    "final_score": 65.8246
+  },
+  {
+    "rank": 5,
+    "country": "IRL",
+    "final_score": 65.5774
+  },
+  {
+    "rank": 6,
+    "country": "DNK",
+    "final_score": 65.1001
+  },
+  {
+    "rank": 7,
+    "country": "JPN",
+    "final_score": 64.2395
+  },
+  {
+    "rank": 8,
+    "country": "KOR",
+    "final_score": 64.102
+  },
+  {
+    "rank": 9,
+    "country": "GBR",
+    "final_score": 64.0036
+  },
+  {
+    "rank": 10,
+    "country": "AUS",
+    "final_score": 63.8445
+  },
+  {
+    "rank": 11,
+    "country": "NLD",
+    "final_score": 63.4942
+  },
+  {
+    "rank": 12,
+    "country": "HKG",
+    "final_score": 63.2916
+  },
+  {
+    "rank": 13,
+    "country": "CHN",
+    "final_score": 63.1968
+  },
+  {
+    "rank": 14,
+    "country": "ARE",
+    "final_score": 62.6098
+  },
+  {
+    "rank": 15,
+    "country": "FRA",
+    "final_score": 62.1173
+  },
+  {
+    "rank": 16,
+    "country": "ISL",
+    "final_score": 61.6217
+  },
+  {
+    "rank": 17,
+    "country": "ITA",
+    "final_score": 60.9883
+  },
+  {
+    "rank": 18,
+    "country": "NOR",
+    "final_score": 60.395
+  },
+  {
+    "rank": 19,
+    "country": "IND",
+    "final_score": 59.4709
+  },
+  {
+    "rank": 20,
+    "country": "BEL",
+    "final_score": 59.4287
+  },
+  {
+    "rank": 21,
+    "country": "FIN",
+    "final_score": 58.9175
+  },
+  {
+    "rank": 22,
+    "country": "AUT",
+    "final_score": 58.8934
+  },
+  {
+    "rank": 23,
+    "country": "ESP",
+    "final_score": 58.6705
+  },
+  {
+    "rank": 24,
+    "country": "SGP",
+    "final_score": 58.6073
+  },
+  {
+    "rank": 25,
+    "country": "LUX",
+    "final_score": 57.6851
+  },
+  {
+    "rank": 26,
+    "country": "SWE",
+    "final_score": 57.6613
+  },
+  {
+    "rank": 27,
+    "country": "THA",
+    "final_score": 57.4515
+  },
+  {
+    "rank": 28,
+    "country": "TUR",
+    "final_score": 55.6963
+  },
+  {
+    "rank": 29,
+    "country": "LTU",
+    "final_score": 55.2563
+  },
+  {
+    "rank": 30,
+    "country": "QAT",
+    "final_score": 55.0463
+  },
+  {
+    "rank": 31,
+    "country": "ISR",
+    "final_score": 54.8534
+  },
+  {
+    "rank": 32,
+    "country": "BRA",
+    "final_score": 54.6816
+  },
+  {
+    "rank": 33,
+    "country": "RUS",
+    "final_score": 54.6175
+  },
+  {
+    "rank": 34,
+    "country": "POL",
+    "final_score": 54.2302
+  },
+  {
+    "rank": 35,
+    "country": "SAU",
+    "final_score": 54.0468
+  },
+  {
+    "rank": 36,
+    "country": "PRT",
+    "final_score": 53.9141
+  },
+  {
+    "rank": 37,
+    "country": "EST",
+    "final_score": 52.4065
+  },
+  {
+    "rank": 38,
+    "country": "MYS",
+    "final_score": 52.3071
+  },
+  {
+    "rank": 39,
+    "country": "CHL",
+    "final_score": 51.2819
+  },
+  {
+    "rank": 40,
+    "country": "CZE",
+    "final_score": 51.2481
+  },
+  {
+    "rank": 41,
+    "country": "NZL",
+    "final_score": 51.1544
+  },
+  {
+    "rank": 42,
+    "country": "HUN",
+    "final_score": 50.4403
+  },
+  {
+    "rank": 43,
+    "country": "HRV",
+    "final_score": 50.4137
+  },
+  {
+    "rank": 44,
+    "country": "MLT",
+    "final_score": 49.9097
+  },
+  {
+    "rank": 45,
+    "country": "SVN",
+    "final_score": 49.8679
+  },
+  {
+    "rank": 46,
+    "country": "MEX",
+    "final_score": 49.6152
+  },
+  {
+    "rank": 47,
+    "country": "CYP",
+    "final_score": 48.8853
+  },
+  {
+    "rank": 48,
+    "country": "VNM",
+    "final_score": 48.8373
+  },
+  {
+    "rank": 49,
+    "country": "IDN",
+    "final_score": 48.7395
+  },
+  {
+    "rank": 50,
+    "country": "ARG",
+    "final_score": 48.7238
+  },
+  {
+    "rank": 51,
+    "country": "KAZ",
+    "final_score": 48.6612
+  },
+  {
+    "rank": 52,
+    "country": "GRC",
+    "final_score": 47.6764
+  },
+  {
+    "rank": 53,
+    "country": "TTO",
+    "final_score": 47.1699
+  },
+  {
+    "rank": 54,
+    "country": "ROU",
+    "final_score": 46.7725
+  },
+  {
+    "rank": 55,
+    "country": "SVK",
+    "final_score": 46.0777
+  },
+  {
+    "rank": 56,
+    "country": "BHR",
+    "final_score": 45.6673
+  },
+  {
+    "rank": 57,
+    "country": "BGR",
+    "final_score": 45.2501
+  },
+  {
+    "rank": 58,
+    "country": "ZAF",
+    "final_score": 45.2168
+  },
+  {
+    "rank": 59,
+    "country": "COL",
+    "final_score": 44.7949
+  },
+  {
+    "rank": 60,
+    "country": "PER",
+    "final_score": 44.1407
+  },
+  {
+    "rank": 61,
+    "country": "KWT",
+    "final_score": 43.9127
+  },
+  {
+    "rank": 62,
+    "country": "OMN",
+    "final_score": 43.4279
+  },
+  {
+    "rank": 63,
+    "country": "LVA",
+    "final_score": 42.59
+  },
+  {
+    "rank": 64,
+    "country": "ZMB",
+    "final_score": 42.2714
+  },
+  {
+    "rank": 65,
+    "country": "SRB",
+    "final_score": 41.9964
+  },
+  {
+    "rank": 66,
+    "country": "UKR",
+    "final_score": 41.9293
+  },
+  {
+    "rank": 67,
+    "country": "KEN",
+    "final_score": 41.3933
+  },
+  {
+    "rank": 68,
+    "country": "PHL",
+    "final_score": 41.1744
+  },
+  {
+    "rank": 69,
+    "country": "BGD",
+    "final_score": 40.8956
+  },
+  {
+    "rank": 70,
+    "country": "VEN",
+    "final_score": 40.6293
+  },
+  {
+    "rank": 71,
+    "country": "JAM",
+    "final_score": 40.1505
+  },
+  {
+    "rank": 72,
+    "country": "LKA",
+    "final_score": 39.7491
+  },
+  {
+    "rank": 73,
+    "country": "MAR",
+    "final_score": 39.6303
+  },
+  {
+    "rank": 74,
+    "country": "EGY",
+    "final_score": 38.7055
+  },
+  {
+    "rank": 75,
+    "country": "TUN",
+    "final_score": 38.5217
+  },
+  {
+    "rank": 76,
+    "country": "JOR",
+    "final_score": 37.2096
+  },
+  {
+    "rank": 77,
+    "country": "MUS",
+    "final_score": 36.6333
+  },
+  {
+    "rank": 78,
+    "country": "NGA",
+    "final_score": 35.9854
+  },
+  {
+    "rank": 79,
+    "country": "TZA",
+    "final_score": 35.8838
+  },
+  {
+    "rank": 80,
+    "country": "UGA",
+    "final_score": 35.8106
+  },
+  {
+    "rank": 81,
+    "country": "NAM",
+    "final_score": 34.9938
+  },
+  {
+    "rank": 82,
+    "country": "BWA",
+    "final_score": 34.5993
+  },
+  {
+    "rank": 83,
+    "country": "PAK",
+    "final_score": 34.0863
+  },
+  {
+    "rank": 84,
+    "country": "GHA",
+    "final_score": 33.1195
+  },
+  {
+    "rank": 85,
+    "country": "PSE",
+    "final_score": 32.1666
+  },
+  {
+    "rank": 86,
+    "country": "CIV",
+    "final_score": 32.0217
+  },
+  {
+    "rank": 87,
+    "country": "MWI",
+    "final_score": 30.6426
+  },
+  {
+    "rank": 88,
+    "country": "LBN",
+    "final_score": 29.1438
+  },
+  {
+    "rank": 89,
+    "country": "ZWE",
+    "final_score": 25.1437
+  }
+]

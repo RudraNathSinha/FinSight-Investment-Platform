@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ensemble Ranking Methods | FinSight</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body{margin:0;font-family:Inter,system-ui,sans-serif;background:#070b14;color:#e8eef7;line-height:1.6}
+    .wrap{max-width:800px;margin:0 auto;padding:32px 20px 64px}
+    a{color:#38bdf8}
+    h1{font-size:28px;margin:0 0 8px}
+    h2{font-size:18px;color:#38bdf8;margin:28px 0 8px}
+    p,li{color:#94a3b8;font-size:14px}
+    .card{background:#0f1623;border:1px solid #243044;border-radius:12px;padding:16px;margin:12px 0}
+    .warn{color:#fbbf24;font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p><a href="./">← Sector & Industry Intelligence</a></p>
+    <h1>How sector & stock ranks are built</h1>
+    <p class="warn">Illustrative offline model — not a forecast and not country ranking.</p>
+    <p>FinSight Sector & Industry Intelligence ranks business areas and stocks within sectors using a multi-criteria ensemble. Each method scores the same input metrics differently; the ensemble combines them for a stable ordering.</p>
+    <div class="card"><h2>SAW</h2><p>Simple Additive Weighting — weighted average of normalised metrics. Easy to interpret.</p></div>
+    <div class="card"><h2>TOPSIS</h2><p>Ranks names by distance to an ideal best and worst profile in metric space.</p></div>
+    <div class="card"><h2>VIKOR</h2><p>Compromise ranking under conflicting criteria; emphasises balance versus extremes.</p></div>
+    <div class="card"><h2>GRA</h2><p>Grey Relational Analysis — useful when relationships between metrics are partially known.</p></div>
+    <div class="card"><h2>WASPAS / COPRAS</h2><p>Weighted aggregated sum product and complex proportional assessment — alternative multi-criteria formulations.</p></div>
+    <div class="card"><h2>PCA</h2><p>Principal components compress correlated metrics into factors before ranking.</p></div>
+    <h2>How to use this as an analyst</h2>
+    <ul>
+      <li>Treat ranks as a structured screen, not a buy list.</li>
+      <li>Open a company in Global Equity Universe for live statements and the equity research pack.</li>
+      <li>Do not compare these ranks to Country Ranking scores — different models and units.</li>
+    </ul>
+    <p>© All rights reserved FinSight prepared by Rudra Nath Sinha.</p>
+  </div>
+</body>
+</html>

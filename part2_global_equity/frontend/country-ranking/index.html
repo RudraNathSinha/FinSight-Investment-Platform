@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>FinSight Country Intelligence Platform</title>
+  <meta name="description" content="FinSight Country Intelligence Platform — rank stock-market economies with transparent World Bank data and hierarchical 0–100 scores." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: {
+              50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1',
+              400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155',
+              800: '#1e293b', 900: '#0f172a', 950: '#020617'
+            },
+            accent: { 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1' },
+            score: { high: '#059669', mid: '#0284c7', low: '#d97706', weak: '#dc2626' }
+          },
+          fontFamily: {
+            sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+            display: ['"Instrument Serif"', 'Georgia', 'serif']
+          },
+          boxShadow: {
+            soft: '0 1px 2px 0 rgb(0 0 0 / 0.03), 0 1px 3px 0 rgb(0 0 0 / 0.04)',
+            card: '0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05)',
+            elevated: '0 10px 15px -3px rgb(0 0 0 / 0.06), 0 4px 6px -4px rgb(0 0 0 / 0.04)',
+            glow: '0 0 0 1px rgb(14 165 233 / 0.15), 0 4px 12px -2px rgb(14 165 233 / 0.12)'
+          },
+          letterSpacing: {
+            tighter: '-0.03em',
+            tight: '-0.015em'
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-treemap@2.3.0/dist/chartjs-chart-treemap.min.js"></script>
+  <script src="https://unpkg.com/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
+  <link href="https://unpkg.com/vis-network@9.1.9/styles/vis-network.min.css" rel="stylesheet" type="text/css" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-feature-settings: "cv02","cv03","cv04","cv11"; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    .leaflet-container { font-family: Inter, system-ui, sans-serif; background: #f1f5f9; }
+    .leaflet-popup-content-wrapper { border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+    .leaflet-popup-content { margin: 10px 14px; font-size: 13px; line-height: 1.45; }
+    .score-track { height: 6px; background: #e2e8f0; border-radius: 9999px; overflow: hidden; }
+    .score-fill { height: 100%; border-radius: 9999px; transition: width 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .view { display: none; }
+    .view.active { display: block; animation: fadeIn 0.22s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+    .data-table th { position: sticky; top: 0; z-index: 10; background: #f8fafc; }
+    .data-table tbody tr { cursor: pointer; transition: background 0.12s; }
+    .data-table tbody tr:hover { background: #f1f5f9; }
+    .rank-1 { background: #fbbf24; color: #78350f; }
+    .rank-2 { background: #d1d5db; color: #1f2937; }
+    .rank-3 { background: #fdba74; color: #7c2d12; }
+    .dir-beneficial { background: #ecfdf5; color: #065f46; }
+    .dir-adverse { background: #fef2f2; color: #991b1b; }
+    .focus-ring:focus-visible { outline: 2px solid #0ea5e9; outline-offset: 2px; }
+    @media (max-width: 767px) {
+      .mobile-card-table thead { display: none; }
+      .mobile-card-table tbody tr {
+        display: block; margin-bottom: 0.75rem; border: 1px solid #e2e8f0;
+        border-radius: 0.75rem; padding: 0.875rem; background: white;
+      }
+      .mobile-card-table tbody td {
+        display: flex; justify-content: space-between; padding: 0.25rem 0;
+        border: none; font-size: 0.8125rem;
+      }
+      .mobile-card-table tbody td::before {
+        content: attr(data-label); font-weight: 500; color: #64748b; margin-right: 1rem;
+      }
+    }
+
+    /* Mobile / tablet system */
+    html, body { overflow-x: hidden; max-width: 100vw; }
+    #main-content { min-height: 50vh; }
+    @media (max-width: 1023px) {
+      .nav-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .nav-scroll::-webkit-scrollbar { display: none; }
+    }
+    @media (max-width: 767px) {
+      .hero-gradient h1 { font-size: 1.625rem !important; line-height: 1.25 !important; }
+      .card-premium { border-radius: 10px; }
+      .leaflet-container { min-height: 260px; }
+      canvas { max-width: 100% !important; }
+      pre { font-size: 10px !important; }
+      .stat-value { font-size: 1.25rem; }
+      /* Touch targets */
+      button, a, .country-link, .nav-link { min-height: 44px; }
+      input[type="range"] { min-height: 28px; }
+      /* Stack chart grids */
+      .chart-box { height: 220px !important; }
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .leaflet-container { min-height: 320px; }
+    }
+    /* Safe area for notched phones */
+    header { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+    footer { padding-bottom: max(0.75rem, env(safe-area-inset-bottom)); }
+
+    /* Premium refinements */
+    .view.active { animation: fadeIn 0.28s cubic-bezier(0.22, 1, 0.36, 1); }
+    .card-premium {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .card-premium:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 12px -2px rgb(0 0 0 / 0.06);
+    }
+    .hero-gradient {
+      background: linear-gradient(165deg, #0f172a 0%, #1e293b 45%, #0f172a 100%);
+    }
+    .stat-value {
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+    .nav-link.active-nav {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+    html.dark .nav-link.active-nav {
+      background: #334155;
+      color: #f1f5f9;
+    }
+    /* Dark mode — high contrast, non-blinding panels */
+    html.dark body { background: #0b1220; color: #e2e8f0; }
+    html.dark .bg-white { background-color: #151d2e !important; }
+    html.dark .bg-ink-50 { background-color: #0b1220 !important; }
+    html.dark .bg-ink-100 { background-color: #1a2336 !important; }
+    html.dark .card-premium { background-color: #151d2e !important; border-color: #2a3548 !important; }
+    html.dark .bg-white.border { background-color: #151d2e !important; }
+    html.dark [class*="rounded-lg"].bg-white { background-color: #151d2e !important; }
+    html.dark .border-ink-200, html.dark .border-ink-100, html.dark .border-ink-50 { border-color: #2a3548 !important; }
+    html.dark .text-ink-900 { color: #f8fafc !important; }
+    html.dark .text-ink-800 { color: #f1f5f9 !important; }
+    html.dark .text-ink-700 { color: #e2e8f0 !important; }
+    html.dark .text-ink-600 { color: #cbd5e1 !important; }
+    html.dark .text-ink-500 { color: #94a3b8 !important; }
+    html.dark .text-ink-400 { color: #94a3b8 !important; }
+    html.dark .text-ink-300 { color: #cbd5e1 !important; }
+    html.dark header, html.dark footer { background-color: #111827 !important; border-color: #2a3548 !important; }
+    html.dark .shadow-soft, html.dark .shadow-card, html.dark .shadow-elevated { box-shadow: none !important; }
+    html.dark .data-table th { background: #1a2336 !important; color: #94a3b8 !important; }
+    html.dark .data-table tbody tr:hover { background: #1f2a3d !important; }
+    html.dark .score-track { background: #2a3548 !important; }
+    html.dark input, html.dark select { background: #1a2336 !important; border-color: #3d4a63 !important; color: #e2e8f0 !important; }
+    html.dark .bg-ink-900 { background-color: #020617 !important; }
+    html.dark .stat-value { color: #f8fafc !important; }
+    html.dark .hero-gradient { background: linear-gradient(165deg, #020617 0%, #0f172a 50%, #020617 100%) !important; }
+    html.dark canvas { filter: none; }
+    /* Modal */
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(15,23,42,0.65); z-index: 80; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+    .modal-panel { background: #fff; border-radius: 12px; max-width: 28rem; width: 100%; max-height: 80vh; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.25); }
+    html.dark .modal-panel { background: #151d2e; border: 1px solid #2a3548; }
+    .modal-panel .modal-body { overflow-y: auto; padding: 0.75rem 1rem 1rem; }
+    .modal-panel button.country-pick { display: block; width: 100%; text-align: left; padding: 0.625rem 0.75rem; border-radius: 8px; font-size: 0.875rem; }
+    .modal-panel button.country-pick:hover { background: #f1f5f9; }
+    html.dark .modal-panel button.country-pick:hover { background: #1f2a3d; }
+
+    /* Print scorecard */
+    @media print {
+      header, footer, #mobile-menu, [data-nav], #theme-toggle, .no-print { display: none !important; }
+      body { background: white !important; color: black !important; }
+      .view { display: block !important; }
+      #country-scorecard, #view-country { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body class="bg-ink-50 text-ink-800 font-sans antialiased min-h-screen">
+
+<div id="app" class="min-h-screen flex flex-col">
+
+  <!-- Navigation -->
+  <header class="bg-white border-b border-ink-200 sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-14">
+        <button data-nav="home" class="flex items-center gap-2.5 focus-ring rounded-md group">
+          <div class="w-8 h-8 rounded-md bg-ink-900 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="text-left hidden xs:block">
+            <div class="text-[13px] font-semibold text-ink-900 leading-none tracking-tight group-hover:text-accent-600 transition">FinSight</div>
+            <div class="text-[10px] text-ink-400 leading-none mt-0.5 hidden sm:block">Country Intelligence Platform</div>
+          </div>
+        </button>
+
+        <nav class="hidden lg:flex items-center gap-0.5 text-[13px] font-medium text-ink-600">
+          <button data-nav="home" class="nav-link px-3 py-1.5 rounded-md hover:bg-ink-100 hover:text-ink-900 transition">Overview</button>
+          <button data-nav="rankings" class="nav-link px-3 py-1.5 rounded-md hover:bg-ink-100 hover:text-ink-900 transition">Rankings</button>
+          <button data-nav="regions" class="nav-link px-3 py-1.5 rounded-md hover:bg-ink-100 hover:text-ink-900 transition">Regions</button>
+          <button data-nav="scenario" class="nav-link px-3 py-1.5 rounded-md hover:bg-ink-100 hover:text-ink-900 transition">Scenario</button>
+          <button data-nav="compare" class="nav-link px-3 py-1.5 rounded-md hover:bg-ink-100 hover:text-ink-900 transition">Compare</button>
+          <button data-nav="blocks" class="nav-link px-3 py-1.5 rounded-md hover:bg-ink-100 hover:text-ink-900 transition">Dimensions</button>
+          <button data-nav="indicators" class="nav-link px-3 py-1.5 rounded-md hover:bg-ink-100 hover:text-ink-900 transition">Indicators</button>
+        </nav>
+
+        <div class="flex items-center gap-2">
+            
+            <button id="theme-toggle" class="p-2 rounded-md hover:bg-ink-100 focus-ring text-ink-500 hover:text-ink-800" title="Toggle dark mode" aria-label="Toggle dark mode">
+              <svg id="icon-sun" class="w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+              <svg id="icon-moon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+            </button>
+          <div class="relative hidden md:block">
+            <input id="global-search" type="search" placeholder="Search countries, indicators…"
+                   class="w-52 lg:w-64 pl-8 pr-3 py-1.5 text-[13px] border border-ink-200 rounded-md bg-ink-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent-500/30 focus:border-accent-500 transition"
+                   autocomplete="off" />
+            <svg class="w-3.5 h-3.5 absolute left-2.5 top-1/2 -translate-y-1/2 text-ink-400 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <div id="search-results" class="hidden absolute top-full mt-1.5 left-0 right-0 bg-white border border-ink-200 rounded-lg shadow-elevated max-h-80 overflow-y-auto z-50"></div>
+          </div>
+          <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-md hover:bg-ink-100 focus-ring">
+            <svg class="w-5 h-5 text-ink-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-ink-100 bg-white">
+      <div class="px-4 py-2 space-y-0.5">
+        <button data-nav="home" class="w-full text-left px-3 py-2.5 rounded-md text-sm font-medium text-ink-700 hover:bg-ink-50">Overview</button>
+        <button data-nav="rankings" class="w-full text-left px-3 py-2.5 rounded-md text-sm font-medium text-ink-700 hover:bg-ink-50">Rankings</button>
+        <button data-nav="regions" class="w-full text-left px-3 py-2.5 rounded-md text-sm font-medium text-ink-700 hover:bg-ink-50">Regions</button>
+        <button data-nav="scenario" class="w-full text-left px-3 py-2.5 rounded-md text-sm font-medium text-ink-700 hover:bg-ink-50">Scenario</button>
+        <button data-nav="compare" class="w-full text-left px-3 py-2.5 rounded-md text-sm font-medium text-ink-700 hover:bg-ink-50">Compare</button>
+        <button data-nav="blocks" class="w-full text-left px-3 py-2.5 rounded-md text-sm font-medium text-ink-700 hover:bg-ink-50">Dimensions</button>
+        <button data-nav="indicators" class="w-full text-left px-3 py-2.5 rounded-md text-sm font-medium text-ink-700 hover:bg-ink-50">Indicators</button>
+        
+        <div class="pt-2 pb-1">
+          <input id="mobile-search" type="search" placeholder="Search countries or indicators…"
+                 class="w-full px-3 py-2 text-sm border border-ink-200 rounded-md bg-ink-50 focus:outline-none focus:ring-2 focus:ring-accent-500/30" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main id="main-content" class="flex-1">
+    <div id="app-loading" class="flex flex-col items-center justify-center py-32">
+      <div class="w-10 h-10 border-2 border-ink-200 border-t-accent-600 rounded-full animate-spin mb-4"></div>
+      <p class="text-sm text-ink-500">Loading FinSight…</p>
+    </div>
+
+    <div id="views" class="hidden">
+      <div id="view-home" class="view"></div>
+      <div id="view-rankings" class="view"></div>
+      <div id="view-country" class="view"></div>
+      <div id="view-compare" class="view"></div>
+      <div id="view-blocks" class="view"></div>
+      <div id="view-block" class="view"></div>
+      <div id="view-indicators" class="view"></div>
+      <div id="view-indicator" class="view"></div>
+      <div id="view-regions" class="view"></div>
+      <div id="view-scenario" class="view"></div>
+      <div id="view-workspace" class="view"></div>
+      <div id="view-methodology" class="view"></div>
+      <div id="view-api" class="view"></div>
+    </div>
+  </main>
+
+  <footer class="border-t border-ink-200 bg-white mt-auto">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-ink-400">
+      <p>FinSight Country Intelligence Platform</p>
+      <p>© Rudra Nath Sinha · All rights reserved · Intellectual property of Rudra Nath Sinha</p>
+    </div>
+  </footer>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

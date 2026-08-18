@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinSight — Global Equity Intelligence</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+          colors: {
+            brand: { 400:'#38bdf8', 500:'#0ea5e9', 600:'#0284c7', 700:'#0369a1' },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root, [data-theme="dark"] {
+      --bg: #020617; --surface: #0f172a; --surface2: #1e293b; --border: #1e293b;
+      --text: #e2e8f0; --muted: #94a3b8; --card: #0f172a;
+    }
+    [data-theme="light"] {
+      --bg: #f8fafc; --surface: #ffffff; --surface2: #f1f5f9; --border: #e2e8f0;
+      --text: #0f172a; --muted: #64748b; --card: #ffffff;
+    }
+    body { font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--text); }
+    .bg-app { background: var(--bg); }
+    .bg-surf { background: var(--surface); }
+    .bg-surf2 { background: var(--surface2); }
+    .border-app { border-color: var(--border); }
+    .text-muted { color: var(--muted); }
+    .sidebar-link.active { background: rgba(14,165,233,0.15); color: #38bdf8; border-left: 3px solid #0ea5e9; }
+    .chart-box { position: relative; height: 260px; }
+    @media (min-width:768px){ .chart-box { height: 300px; } }
+    .fade { animation: fadeIn .35s cubic-bezier(.22,.9,.3,1); }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
+    .animate-slide-up { animation: slideUp .4s cubic-bezier(.22,.9,.3,1); }
+    @keyframes slideUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+    .animate-scale-in { animation: scaleIn .3s cubic-bezier(.22,.9,.3,1); }
+    @keyframes scaleIn { from{opacity:0;transform:scale(.96)} to{opacity:1;transform:none} }
+    .animate-stagger > * { animation: fadeIn .4s cubic-bezier(.22,.9,.3,1) both; }
+    .animate-stagger > *:nth-child(1) { animation-delay: .03s; }
+    .animate-stagger > *:nth-child(2) { animation-delay: .06s; }
+    .animate-stagger > *:nth-child(3) { animation-delay: .09s; }
+    .animate-stagger > *:nth-child(4) { animation-delay: .12s; }
+    .animate-stagger > *:nth-child(5) { animation-delay: .15s; }
+    .animate-stagger > *:nth-child(6) { animation-delay: .18s; }
+    .card-lift { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .card-lift:hover { transform: translateY(-3px); box-shadow: 0 12px 28px -8px rgba(0,0,0,.35); }
+    .btn-press { transition: transform .12s ease, background .15s; }
+    .btn-press:active { transform: scale(.97); }
+    .loader { border:3px solid #334155; border-top-color:#0ea5e9; border-radius:50%; width:24px; height:24px; animation:spin .7s linear infinite; }
+    @keyframes spin { to{transform:rotate(360deg)} }
+    ::-webkit-scrollbar { width:6px; height:6px; }
+    ::-webkit-scrollbar-thumb { background:#475569; border-radius:3px; }
+    .modal-backdrop { background: rgba(2,6,23,0.72); backdrop-filter: blur(6px); animation: fadeIn .2s ease; }
+    .modal-panel { animation: scaleIn .28s cubic-bezier(.22,.9,.3,1); }
+    #map { height: 280px; border-radius: 12px; z-index: 1; }
+    .ac-item:hover, .ac-item.active { background: rgba(14,165,233,0.12); }
+    .sidebar-link { transition: background .15s, color .15s, border-color .15s; }
+    tr { transition: background .12s ease; }
+  </style>
+</head>
+<body class="h-full flex overflow-hidden bg-app">
+
+  <!-- Mobile overlay -->
+  <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden" onclick="toggleSidebar(false)"></div>
+
+  <!-- LEFT SIDEBAR -->
+  <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-60 bg-surf border-r border-app flex flex-col transform -translate-x-full lg:translate-x-0 transition-transform duration-200">
+    <div class="flex items-center gap-2.5 px-4 h-14 border-b border-app shrink-0">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center font-bold text-white text-sm">FS</div>
+      <span class="font-bold tracking-tight text-lg">FinSight</span>
+      <button class="ml-auto lg:hidden text-muted" onclick="toggleSidebar(false)">✕</button>
+    </div>
+    <nav class="flex-1 overflow-y-auto py-3 px-2 space-y-0.5 text-sm">
+      <button onclick="navigate('dashboard')" data-page="dashboard" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left hover:bg-surf2 transition">
+        <span class="opacity-70">⌂</span> Overview
+      </button>
+      <button onclick="navigate('exchanges')" data-page="exchanges" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left hover:bg-surf2 transition">
+        <span class="opacity-70">▣</span> Exchanges
+      </button>
+      <button onclick="navigate('countries')" data-page="countries" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left hover:bg-surf2 transition">
+        <span class="opacity-70">◉</span> Countries
+      </button>
+      <button onclick="navigate('sectors')" data-page="sectors" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left hover:bg-surf2 transition">
+        <span class="opacity-70">▦</span> Sectors
+      </button>
+      <button onclick="navigate('industries')" data-page="industries" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left hover:bg-surf2 transition">
+        <span class="opacity-70">▤</span> Industries
+      </button>
+      <button onclick="navigate('screener')" data-page="screener" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left hover:bg-surf2 transition">
+        <span class="opacity-70">⌕</span> Screener
+      </button>
+      <button onclick="navigate('compare')" data-page="compare" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left hover:bg-surf2 transition">
+        <span class="opacity-70">⇄</span> Compare
+      </button>
+      <button onclick="navigate('report')" data-page="report" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left hover:bg-surf2 transition">
+        <span class="opacity-70">☰</span> Generate Report
+      </button>
+    </nav>
+    <div class="mt-auto px-3 py-3 border-t border-app space-y-1.5 shrink-0">
+      <a href="/methodology.html" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-lg text-xs text-muted hover:text-app hover:bg-surf2 transition">Methodology</a>
+      <a href="/disclaimer.html" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-lg text-xs text-muted hover:text-app hover:bg-surf2 transition">Disclaimer</a>
+      <div class="px-3 pt-2 text-[11px] text-muted leading-snug">FinSight@Rudra Nath Sinha</div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="flex-1 flex flex-col min-w-0 h-full">
+    <!-- Top bar with search + theme -->
+    <header class="h-14 border-b border-app bg-surf flex items-center px-3 sm:px-4 gap-2 sm:gap-3 shrink-0 relative z-30">
+      <button class="lg:hidden p-1.5 rounded-lg hover:bg-surf2" onclick="toggleSidebar(true)">☰</button>
+      
+      <!-- Global search -->
+      <div class="flex-1 max-w-xl relative">
+        <input id="global-search" type="text" placeholder="Search symbol or company…" autocomplete="off"
+          class="w-full bg-surf2 border border-app rounded-lg pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
+          oninput="onSearchInput(this.value)" onkeydown="onSearchKey(event)" />
+        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-muted text-sm">⌕</span>
+        <div id="ac-dropdown" class="hidden absolute left-0 right-0 top-full mt-1 bg-surf border border-app rounded-xl shadow-2xl max-h-72 overflow-y-auto z-50"></div>
+      </div>
+
+      <div id="breadcrumb" class="hidden sm:block text-xs text-muted truncate max-w-[140px]"></div>
+      
+      <!-- Theme toggle -->
+      <button id="classroom-btn" onclick="toggleClassroomMode()" class="px-2 py-1 rounded-lg hover:bg-surf2 text-[11px] text-muted border border-app" title="Hide recommendations emphasis for learning">Classroom: OFF</button>
+      <button id="theme-btn" onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-surf2 text-muted" title="Toggle light/dark">
+        <span id="theme-icon">☀</span>
+      </button>
+    </header>
+
+    <main id="content" class="flex-1 overflow-y-auto p-4 sm:p-6 pb-20"></main>
+  </div>
+
+  <!-- GENERIC LIST POPUP (countries / exchanges / sectors) -->
+  <div id="list-modal" class="fixed inset-0 z-[70] hidden items-center justify-center p-4 modal-backdrop">
+    <div class="bg-surf border border-app rounded-2xl w-full max-w-lg flex flex-col shadow-2xl modal-panel" style="max-height:85vh">
+      <div class="px-5 py-3 border-b border-app flex items-center justify-between shrink-0">
+        <h2 id="list-modal-title" class="font-semibold text-lg"></h2>
+        <button onclick="closeListModal()" class="text-muted hover:opacity-80 text-xl">×</button>
+      </div>
+      <!-- Scrollable table area -->
+      <div class="overflow-y-auto flex-1 min-h-0" style="max-height:calc(85vh - 130px)">
+        <table class="w-full text-sm">
+          <thead class="bg-surf2 text-muted text-xs uppercase sticky top-0">
+            <tr id="list-modal-head"></tr>
+          </thead>
+          <tbody id="list-modal-body" class="divide-y" style="border-color:var(--border)"></tbody>
+        </table>
+      </div>
+      <!-- Fixed bottom button -->
+      <div class="px-5 py-3 border-t border-app shrink-0">
+        <button id="list-modal-action" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-medium py-2.5 rounded-xl transition">
+          In-depth Analysis →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STOCK DETAIL POPUP -->
+  <div id="stock-modal" class="fixed inset-0 z-[80] hidden items-center justify-center p-4 modal-backdrop">
+    <div class="bg-surf border border-app rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl modal-panel">
+      <div class="sticky top-0 bg-surf border-b border-app px-5 py-3 flex items-center justify-between z-10">
+        <div>
+          <div id="modal-symbol" class="font-mono font-bold text-brand-400 text-lg"></div>
+          <div id="modal-name" class="text-sm text-muted"></div>
+        </div>
+        <button onclick="closeStockModal()" class="text-muted text-xl">×</button>
+      </div>
+      <div class="p-5 space-y-4">
+        <div id="modal-meta" class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm"></div>
+        <div class="chart-box"><canvas id="modal-chart"></canvas></div>
+        <div id="modal-summary" class="text-sm text-muted leading-relaxed"></div>
+        <div class="text-center pt-1">
+          <button id="btn-indepth" class="bg-brand-600 hover:bg-brand-500 text-white font-medium px-6 py-2.5 rounded-xl transition">In-depth Analysis →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STOCKS SUMMARY POPUP (from KPI) -->
+  <div id="summary-modal" class="fixed inset-0 z-[70] hidden items-center justify-center p-4 modal-backdrop">
+    <div class="bg-surf border border-app rounded-2xl w-full max-w-md shadow-2xl modal-panel">
+      <div class="px-5 py-3 border-b border-app flex justify-between items-center">
+        <h2 class="font-semibold">Universe Summary</h2>
+        <button onclick="closeSummaryModal()" class="text-muted text-xl">×</button>
+      </div>
+      <div id="summary-body" class="p-5 grid grid-cols-2 gap-3"></div>
+      <div class="px-5 py-3 border-t border-app">
+        <button onclick="closeSummaryModal(); navigate('screener')" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-medium py-2.5 rounded-xl">In-depth Analysis →</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/compare_enhanced.js"></script>
+
+  <!-- Fixed site-wide disclaimer (below app chrome) -->
+  <div id="site-disclaimer" class="fixed bottom-0 left-0 right-0 z-[90] border-t border-app bg-surf/95 backdrop-blur px-3 py-2 text-[10px] sm:text-xs leading-snug text-muted text-center">FinSight is an educational analytics workspace. It is not SEBI-registered research or personalised investment advice. Data may be incomplete. Models are illustrative. Verify with primary filings and a licensed adviser. Read full <a href="/disclaimer.html" class="underline">disclaimer</a> · <a href="/methodology.html" class="underline">Methodology</a>. © All rights reserved FinSight prepared by Rudra Nath Sinha.</div>
+
+</body>
+</html>

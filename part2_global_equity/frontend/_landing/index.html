@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinSight</title>
+  <meta name="description" content="FinSight — Country Ranking, Global Equity Universe, Sector & Industry Intelligence." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=20260816" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("finsight-theme");
+        if (!t) t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <!-- FINSIGHT_LANDING_V20260816 -->
+  <div class="shell">
+    <header class="nav">
+      <a class="brand" href="./">
+        <span class="brand-mark">FS</span>
+        <span class="brand-name">FinSight</span>
+      </a>
+      <div class="nav-right">
+        <a class="nav-link" href="#products">Products</a>
+        <button type="button" class="theme-btn" id="theme-toggle" aria-label="Toggle theme">
+          <span class="theme-icon theme-icon-sun">☀</span>
+          <span class="theme-icon theme-icon-moon">☾</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="hero-kicker">Market intelligence platform</p>
+        <h1>See the market.<br />Open the product.</h1>
+        <p class="hero-sub">
+          Country ranking, a global equity universe, and sector intelligence —
+          three focused workspaces, one FinSight system.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#products">View products</a>
+          <a class="btn btn-ghost" id="cta-hero-equity" href="http://127.0.0.1:8000/equity/" target="_blank" rel="noopener">Open Equity Universe</a>
+        </div>
+      </section>
+
+      <section class="products" id="products">
+        <div class="products-head">
+          <h2>Products</h2>
+          <p>Choose a workspace. Each opens in a new window.</p>
+        </div>
+
+        <div class="product-stack">
+          <a class="product" id="cta-part1" href="http://127.0.0.1:8000/country-ranking/" target="_blank" rel="noopener">
+            <div class="product-copy">
+              <span class="product-index">01</span>
+              <h3>Country Ranking</h3>
+              <p>Compare economies with multi-dimensional scores and open any country for a full rank profile.</p>
+              <span class="product-cta">Open Country Ranking →</span>
+            </div>
+            <div class="product-preview" aria-hidden="true">
+              <div class="ui-window">
+                <div class="ui-bar"><span></span><span></span><span></span></div>
+                <div class="ui-body">
+                  <div class="ui-row"><span class="ui-rank">#1</span><span class="ui-name"></span><span class="ui-score">92.4</span></div>
+                  <div class="ui-row"><span class="ui-rank">#2</span><span class="ui-name"></span><span class="ui-score">88.1</span></div>
+                  <div class="ui-row"><span class="ui-rank">#3</span><span class="ui-name"></span><span class="ui-score">84.7</span></div>
+                  <div class="ui-bars"><i style="--w:92%"></i><i style="--w:76%"></i><i style="--w:64%"></i><i style="--w:58%"></i></div>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a class="product product-featured" id="cta-part2" href="http://127.0.0.1:8000/equity/" target="_blank" rel="noopener">
+            <div class="product-copy">
+              <span class="product-index">02</span>
+              <h3>Global Equity Universe</h3>
+              <p>Explore exchanges and listings worldwide, open any company, and generate a structured equity research report.</p>
+              <span class="product-cta">Open Global Equity Universe →</span>
+            </div>
+            <div class="product-preview" aria-hidden="true">
+              <div class="ui-window">
+                <div class="ui-bar"><span></span><span></span><span></span></div>
+                <div class="ui-body ui-body-eq">
+                  <div class="ui-chip-row"><span></span><span></span><span></span></div>
+                  <div class="ui-chart">
+                    <svg viewBox="0 0 200 64" preserveAspectRatio="none">
+                      <path d="M0 48 C30 44 40 20 70 28 C100 36 120 12 150 18 C170 22 190 8 200 14" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </div>
+                  <div class="ui-metrics"><div><b></b><i></i></div><div><b></b><i></i></div><div><b></b><i></i></div></div>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a class="product" id="cta-part3" href="http://127.0.0.1:5000/" target="_blank" rel="noopener">
+            <div class="product-copy">
+              <span class="product-index">03</span>
+              <h3>Sector &amp; Industry Intelligence</h3>
+              <p>Navigate global sectors and industries, review area rankings, and study stocks within each sector.</p>
+              <span class="product-cta">Open Sector &amp; Industry Intelligence →</span>
+            </div>
+            <div class="product-preview" aria-hidden="true">
+              <div class="ui-window">
+                <div class="ui-bar"><span></span><span></span><span></span></div>
+                <div class="ui-body">
+                  <div class="ui-grid">
+                    <div class="ui-tile"><b>Tech</b><i></i></div>
+                    <div class="ui-tile"><b>Health</b><i></i></div>
+                    <div class="ui-tile"><b>Finance</b><i></i></div>
+                    <div class="ui-tile"><b>Energy</b><i></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <span class="footer-brand">FinSight</span>
+        <span class="footer-meta">© Rudra Nath Sinha</span>
+      </div>
+    </footer>
+  </div>
+  <script src="config.js?v=20260816"></script>
+  <script src="app.js?v=20260816"></script>
+</body>
+</html>

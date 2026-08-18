@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Methodology — FinSight</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --brand:#0369a1; --bg:#f8fafc; --card:#fff; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Inter, system-ui, sans-serif; color:var(--ink); background:var(--bg); line-height:1.65; }
+    header { background:#0c4a6e; color:#fff; padding:28px 20px; }
+    header a { color:#bae6fd; text-decoration:none; font-size:13px; }
+    header h1 { margin:8px 0 4px; font-size:28px; font-weight:700; }
+    header p { margin:0; opacity:.9; font-size:14px; }
+    main { max-width:820px; margin:0 auto; padding:28px 20px 64px; }
+    section { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin-bottom:16px; }
+    h2 { margin:0 0 10px; font-size:18px; color:var(--brand); }
+    h3 { margin:16px 0 8px; font-size:15px; }
+    p, li { font-size:14px; color:#334155; }
+    ul { padding-left:1.25rem; margin:8px 0; }
+    .muted { color:var(--muted); font-size:13px; }
+    footer { max-width:820px; margin:0 auto; padding:12px 20px 40px; font-size:12px; color:var(--muted); }
+    code { background:#f1f5f9; padding:1px 6px; border-radius:4px; font-size:12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/">← Back to FinSight</a>
+    <h1>Methodology</h1>
+    <p>How FinSight collects, merges, and presents equity analytics</p>
+  </header>
+  <main>
+    <section>
+      <h2>1. Purpose</h2>
+      <p>FinSight is an <strong>educational analytics workspace</strong>. It helps students, new joiners, data analysts, and finance professionals explore global equity listings and generate structured research-style packs from public free data sources. It is <strong>not</strong> SEBI-registered research, a portfolio recommendation service, or personalised investment advice.</p>
+    </section>
+
+    <section>
+      <h2>2. Universe coverage</h2>
+      <p>The listing universe is stored in a local database compiled from public exchange and directory sources. Country packs under <code>data/country_packs/</code> extend coverage for markets where live feeds are thin. Search, sector, industry, and peer tools read from this universe.</p>
+    </section>
+
+    <section>
+      <h2>3. Data sources and preference order</h2>
+      <p>For a selected symbol and exchange, FinSight requests data in parallel and merges fields using a fixed preference order:</p>
+      <ol>
+        <li><strong>stockanalysis.com scrape</strong> — primary for statements and profile pages when reachable</li>
+        <li><strong>yfinance</strong> — prices, key statistics, history, and statements when the ticker resolves</li>
+        <li><strong>Free public APIs</strong> — supplementary quotes and metadata</li>
+        <li><strong>Multi-source bundle merge</strong> — field-level fill of gaps across the above</li>
+        <li><strong>Rule-based synthesizer</strong> — narrative structure (SWOT-style points, risk register, recommendation framing) derived from available numbers; not a generative market forecast model</li>
+        <li><strong>Local country packs</strong> — offline JSON last resort only when live sources return no usable data</li>
+      </ol>
+      <p class="muted">When a field is missing upstream, a lower-preference source may fill it. Blank cells mean no free feed provided the value.</p>
+    </section>
+
+    <section>
+      <h2>4. Statement construction and YoY growth</h2>
+      <p>Income statement, balance sheet, and cash-flow tables are normalised into period columns. Year-over-year (YoY) rows are computed as percentage change versus the prior column when both values are numeric and the base is non-zero. Positive YoY is shown in green; negative YoY in red in the web app and in print/PDF output.</p>
+      <p>Restatements, discontinued operations, and one-off items may not be flagged by free feeds. Always reconcile material lines with primary exchange filings.</p>
+    </section>
+
+    <section>
+      <h2>5. Ratios, insights, and recommendation</h2>
+      <p>Ratios use disclosed or computed values from the merged snapshot. Investor insights are rule-based interpretations of definition plus observed level (for example valuation multiples, leverage, liquidity). They are educational commentary, not target prices.</p>
+      <p>The Buy / Hold / Sell stance in the equity report is an automated score synthesising growth, profitability, cash flow, leverage, valuation, and qualitative SWOT-style factors from the same pack. Score thresholds are heuristic. Classroom mode reduces emphasis on recommendation language for teaching use.</p>
+    </section>
+
+    <section>
+      <h2>6. Equity research report structure</h2>
+      <p>Generated reports follow a multi-chapter template: cover, index, how-to-read, methodology snapshot, company profile, statements with YoY, ratios, SWOT, PESTLE, risks, dividends (if available), price trajectory, synthesis, recommendation with detailed rationale, glossary, and thank-you page. Template version is shown in the page footer (currently v1.2).</p>
+    </section>
+
+    <section>
+      <h2>7. Caching and refresh</h2>
+      <p>Merged report payloads may be cached briefly in memory to speed repeat views. Rebuilding country packs via the admin rebuild endpoint clears the report cache. Users should hard-refresh the browser after major server updates.</p>
+    </section>
+
+    <section>
+      <h2>8. Limitations</h2>
+      <ul>
+        <li>Free data can be incomplete, delayed, or inconsistent across secondary listings.</li>
+        <li>Secondary tickers may not be the issuer’s primary listing.</li>
+        <li>Models and scores are illustrative; they do not incorporate proprietary order-book, alternative data, or human analyst overrides.</li>
+        <li>Country ranking module uses a separate indicator methodology documented in that module’s data notes.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>9. Good practice for users</h2>
+      <ul>
+        <li>Verify material figures in annual reports, interim filings, and exchange announcements.</li>
+        <li>Compare ratios within the same industry and accounting regime.</li>
+        <li>Treat recommendation labels as discussion prompts, not instructions to trade.</li>
+        <li>Consult a licensed adviser for personalised decisions.</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    FinSight · Methodology · © All rights reserved FinSight prepared by Rudra Nath Sinha.
+    <br /><a href="/disclaimer.html">Disclaimer</a> · <a href="/">Home</a>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,905 @@
+[
+  {
+    "indicator_code": "AG.LND.FRST.ZS",
+    "indicator_name": "Forest area (% of land area)",
+    "is_selected": true,
+    "blocks": "10",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "BG.GSR.NFSV.GD.ZS",
+    "indicator_name": "Trade in services (% of GDP)",
+    "is_selected": true,
+    "blocks": "3",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "BN.CAB.XOKA.GD.ZS",
+    "indicator_name": "Current account balance (% of GDP)",
+    "is_selected": true,
+    "blocks": "2",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "BX.GSR.TOTL.CD",
+    "indicator_name": "Exports of goods, services and primary income",
+    "is_selected": true,
+    "blocks": "3",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+    "indicator_name": "FDI net inflows (% of GDP)",
+    "is_selected": true,
+    "blocks": "3",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "CC.EST",
+    "indicator_name": "Control of Corruption: Estimate",
+    "is_selected": true,
+    "blocks": "9",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "CC.PER.RNK",
+    "indicator_name": "Control of Corruption: Percentile Rank",
+    "is_selected": true,
+    "blocks": "9",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "CM.MKT.LCAP.GD.ZS",
+    "indicator_name": "Market capitalization (% of GDP)",
+    "is_selected": true,
+    "blocks": "4",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "CM.MKT.LDOM.NO",
+    "indicator_name": "Listed domestic companies",
+    "is_selected": true,
+    "blocks": "4",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "CM.MKT.TRAD.GD.ZS",
+    "indicator_name": "Stocks traded, total value (% of GDP)",
+    "is_selected": true,
+    "blocks": "4",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "CM.MKT.TRNR",
+    "indicator_name": "Stock market turnover ratio (%)",
+    "is_selected": true,
+    "blocks": "4",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "DT.DOD.DECT.GN.ZS",
+    "indicator_name": "External debt stocks (% of GNI)",
+    "is_selected": false,
+    "blocks": "2",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "DT.DOD.DSTC.ZS",
+    "indicator_name": "Short-term debt (% of total external debt)",
+    "is_selected": false,
+    "blocks": "2",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "EG.CFT.ACCS.ZS",
+    "indicator_name": "Access to clean fuels for cooking (%)",
+    "is_selected": true,
+    "blocks": "8",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "EG.EGY.PRIM.PP.KD",
+    "indicator_name": "Energy intensity of primary energy",
+    "is_selected": false,
+    "blocks": "10",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "EG.ELC.ACCS.RU.ZS",
+    "indicator_name": "Access to electricity, rural (%)",
+    "is_selected": true,
+    "blocks": "8",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "EG.ELC.ACCS.ZS",
+    "indicator_name": "Access to electricity (%)",
+    "is_selected": true,
+    "blocks": "8,10",
+    "num_blocks": 2
+  },
+  {
+    "indicator_code": "EG.ELC.RNEW.ZS",
+    "indicator_name": "Renewable electricity output (%)",
+    "is_selected": true,
+    "blocks": "10",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "EG.FEC.RNEW.ZS",
+    "indicator_name": "Renewable energy consumption (%)",
+    "is_selected": true,
+    "blocks": "10",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "EG.USE.COMM.FO.ZS",
+    "indicator_name": "Fossil fuel energy consumption (%)",
+    "is_selected": false,
+    "blocks": "10",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "EG.USE.ELEC.KH.PC",
+    "indicator_name": "Electric power consumption (kWh per capita)",
+    "is_selected": true,
+    "blocks": "8",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "EN.ATM.CO2E.PC",
+    "indicator_name": "CO2 emissions (metric tons per capita)",
+    "is_selected": false,
+    "blocks": "10",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "EN.ATM.CO2E.PP.GD",
+    "indicator_name": "CO2 intensity (kg per PPP $ of GDP)",
+    "is_selected": false,
+    "blocks": "10",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "EN.ATM.PM25.MC.M3",
+    "indicator_name": "PM2.5 air pollution",
+    "is_selected": false,
+    "blocks": "10",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "ER.H2O.FWTL.ZS",
+    "indicator_name": "Annual freshwater withdrawals (%)",
+    "is_selected": false,
+    "blocks": "10",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "ER.LND.PTLD.ZS",
+    "indicator_name": "Terrestrial protected areas (%)",
+    "is_selected": true,
+    "blocks": "10",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "FB.AST.NPER.ZS",
+    "indicator_name": "Bank nonperforming loans (%)",
+    "is_selected": false,
+    "blocks": "4",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "FB.ATM.TOTL.P5",
+    "indicator_name": "ATMs (per 100,000 adults)",
+    "is_selected": true,
+    "blocks": "4",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "FB.BNK.CAPA.ZS",
+    "indicator_name": "Bank capital to assets ratio (%)",
+    "is_selected": true,
+    "blocks": "4",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "FB.CBK.BRCH.P5",
+    "indicator_name": "Commercial bank branches (per 100,000)",
+    "is_selected": true,
+    "blocks": "4",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "FD.AST.PRVT.GD.ZS",
+    "indicator_name": "Domestic credit to private sector by banks (% of GDP)",
+    "is_selected": true,
+    "blocks": "4",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "FI.RES.TOTL.MO",
+    "indicator_name": "Total reserves in months of imports",
+    "is_selected": true,
+    "blocks": "2",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "FM.LBL.BMNY.GD.ZS",
+    "indicator_name": "Broad money (% of GDP)",
+    "is_selected": true,
+    "blocks": "2,4",
+    "num_blocks": 2
+  },
+  {
+    "indicator_code": "FM.LBL.BMNY.ZG",
+    "indicator_name": "Broad money growth (annual %)",
+    "is_selected": false,
+    "blocks": "2",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "FP.CPI.TOTL.ZG",
+    "indicator_name": "Inflation, consumer prices (annual %)",
+    "is_selected": false,
+    "blocks": "2",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "FP.WPI.TOTL",
+    "indicator_name": "Wholesale price index",
+    "is_selected": false,
+    "blocks": "2",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "FR.INR.DPST",
+    "indicator_name": "Deposit interest rate (%)",
+    "is_selected": true,
+    "blocks": "2",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "FR.INR.RINR",
+    "indicator_name": "Real interest rate (%)",
+    "is_selected": true,
+    "blocks": "2",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "FS.AST.PRVT.GD.ZS",
+    "indicator_name": "Domestic credit to private sector (% of GDP)",
+    "is_selected": true,
+    "blocks": "4",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "FX.OWN.TOTL.ZS",
+    "indicator_name": "Account ownership (% age 15+)",
+    "is_selected": true,
+    "blocks": "4",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "GC.BAL.CASH.GD.ZS",
+    "indicator_name": "Cash surplus/deficit (% of GDP)",
+    "is_selected": true,
+    "blocks": "2",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "GC.DOD.TOTL.GD.ZS",
+    "indicator_name": "Central government debt (% of GDP)",
+    "is_selected": false,
+    "blocks": "2",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "GE.EST",
+    "indicator_name": "Government Effectiveness: Estimate",
+    "is_selected": true,
+    "blocks": "9",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "GE.PER.RNK",
+    "indicator_name": "Government Effectiveness: Percentile Rank",
+    "is_selected": true,
+    "blocks": "9",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "IS.AIR.PSGR",
+    "indicator_name": "Air transport, passengers carried",
+    "is_selected": true,
+    "blocks": "8",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "IS.ROD.PAVE.ZS",
+    "indicator_name": "Roads, paved (% of total roads)",
+    "is_selected": true,
+    "blocks": "8",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "IS.RRS.TOTL.KM",
+    "indicator_name": "Rail lines (total route-km)",
+    "is_selected": true,
+    "blocks": "8",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "IT.CEL.SETS.P2",
+    "indicator_name": "Mobile cellular subscriptions (per 100)",
+    "is_selected": true,
+    "blocks": "8",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "IT.MLT.MAIN.P2",
+    "indicator_name": "Fixed telephone subscriptions (per 100)",
+    "is_selected": true,
+    "blocks": "8",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "IT.NET.BBND.P2",
+    "indicator_name": "Fixed broadband subscriptions (per 100)",
+    "is_selected": true,
+    "blocks": "8",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "IT.NET.SECR.P6",
+    "indicator_name": "Secure internet servers (per 1 million)",
+    "is_selected": true,
+    "blocks": "8",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "IT.NET.USER.ZS",
+    "indicator_name": "Individuals using the Internet (%)",
+    "is_selected": true,
+    "blocks": "8",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NE.CON.TOTL.ZS",
+    "indicator_name": "Final consumption expenditure (% of GDP)",
+    "is_selected": true,
+    "blocks": "1",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NE.EXP.GNFS.ZS",
+    "indicator_name": "Exports of goods and services (% of GDP)",
+    "is_selected": true,
+    "blocks": "3",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NE.GDI.TOTL.ZS",
+    "indicator_name": "Gross capital formation (% of GDP)",
+    "is_selected": true,
+    "blocks": "1",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NE.IMP.GNFS.ZS",
+    "indicator_name": "Imports of goods and services (% of GDP)",
+    "is_selected": true,
+    "blocks": "3",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NE.RSB.GNFS.ZS",
+    "indicator_name": "External balance on goods and services (% of GDP)",
+    "is_selected": true,
+    "blocks": "3",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NE.TRD.GNFS.ZS",
+    "indicator_name": "Trade (% of GDP)",
+    "is_selected": true,
+    "blocks": "3",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NV.IND.MANF.ZS",
+    "indicator_name": "Manufacturing value added (% of GDP)",
+    "is_selected": true,
+    "blocks": "1",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NV.IND.TOTL.ZS",
+    "indicator_name": "Industry value added (% of GDP)",
+    "is_selected": true,
+    "blocks": "1",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NV.SRV.TOTL.ZS",
+    "indicator_name": "Services value added (% of GDP)",
+    "is_selected": true,
+    "blocks": "1",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NY.ADJ.DFOR.GN.ZS",
+    "indicator_name": "Net forest depletion (% of GNI)",
+    "is_selected": false,
+    "blocks": "10",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NY.GDP.MKTP.CD",
+    "indicator_name": "GDP (current US$)",
+    "is_selected": true,
+    "blocks": "1",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NY.GDP.MKTP.KD.ZG",
+    "indicator_name": "GDP growth (annual %)",
+    "is_selected": true,
+    "blocks": "1",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NY.GDP.PCAP.CD",
+    "indicator_name": "GDP per capita (current US$)",
+    "is_selected": true,
+    "blocks": "1",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NY.GDP.PCAP.PP.KD",
+    "indicator_name": "GDP per capita, PPP",
+    "is_selected": true,
+    "blocks": "1",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NY.GNP.PCAP.CD",
+    "indicator_name": "GNI per capita (current US$)",
+    "is_selected": true,
+    "blocks": "1",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NY.GNP.PCAP.PP.CD",
+    "indicator_name": "GNI per capita, PPP",
+    "is_selected": true,
+    "blocks": "1",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "NY.GNS.ICTR.ZS",
+    "indicator_name": "Gross savings (% of GDP)",
+    "is_selected": true,
+    "blocks": "1",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "PV.EST",
+    "indicator_name": "Political Stability: Estimate",
+    "is_selected": true,
+    "blocks": "9",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "PV.PER.RNK",
+    "indicator_name": "Political Stability: Percentile Rank",
+    "is_selected": true,
+    "blocks": "9",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "RL.EST",
+    "indicator_name": "Rule of Law: Estimate",
+    "is_selected": true,
+    "blocks": "9",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "RL.PER.RNK",
+    "indicator_name": "Rule of Law: Percentile Rank",
+    "is_selected": true,
+    "blocks": "9",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "RQ.EST",
+    "indicator_name": "Regulatory Quality: Estimate",
+    "is_selected": true,
+    "blocks": "9",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "RQ.PER.RNK",
+    "indicator_name": "Regulatory Quality: Percentile Rank",
+    "is_selected": true,
+    "blocks": "9",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SE.ADT.LITR.ZS",
+    "indicator_name": "Adult literacy rate (%)",
+    "is_selected": true,
+    "blocks": "5",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SE.ENR.PRSC.FM.ZS",
+    "indicator_name": "Gender parity index (education)",
+    "is_selected": true,
+    "blocks": "11",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SE.ENR.TERT.FM.ZS",
+    "indicator_name": "Gender parity – tertiary",
+    "is_selected": true,
+    "blocks": "11",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SE.PRM.CMPT.ZS",
+    "indicator_name": "Primary completion rate (%)",
+    "is_selected": true,
+    "blocks": "5",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SE.PRM.ENRL.TC.ZS",
+    "indicator_name": "Pupil-teacher ratio, primary",
+    "is_selected": false,
+    "blocks": "5",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SE.PRM.ENRR",
+    "indicator_name": "Primary enrollment (% gross)",
+    "is_selected": true,
+    "blocks": "5",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SE.PRM.TCAQ.ZS",
+    "indicator_name": "Trained teachers in primary (%)",
+    "is_selected": true,
+    "blocks": "5",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SE.SEC.ENRL.TC.ZS",
+    "indicator_name": "Pupil-teacher ratio, secondary",
+    "is_selected": false,
+    "blocks": "5",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SE.SEC.ENRR",
+    "indicator_name": "Secondary enrollment (% gross)",
+    "is_selected": true,
+    "blocks": "5",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SE.SEC.TCAQ.ZS",
+    "indicator_name": "Trained teachers in secondary (%)",
+    "is_selected": true,
+    "blocks": "5",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SE.TER.ENRL",
+    "indicator_name": "Tertiary enrollment, total",
+    "is_selected": true,
+    "blocks": "5",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SE.TER.ENRR",
+    "indicator_name": "Tertiary enrollment (% gross)",
+    "is_selected": true,
+    "blocks": "5",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SE.XPD.PRIM.PC.ZS",
+    "indicator_name": "Expenditure per student, primary",
+    "is_selected": true,
+    "blocks": "5",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SE.XPD.TOTL.GD.ZS",
+    "indicator_name": "Government education expenditure (% of GDP)",
+    "is_selected": true,
+    "blocks": "5",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SH.DYN.MORT",
+    "indicator_name": "Under-5 mortality rate",
+    "is_selected": false,
+    "blocks": "6",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SH.H2O.SMDW.ZS",
+    "indicator_name": "Safely managed drinking water (%)",
+    "is_selected": true,
+    "blocks": "6",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SH.MED.BEDS.ZS",
+    "indicator_name": "Hospital beds (per 1,000)",
+    "is_selected": true,
+    "blocks": "6",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SH.MED.NUMW.P3",
+    "indicator_name": "Nurses and midwives (per 1,000)",
+    "is_selected": true,
+    "blocks": "6",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SH.MED.PHYS.ZS",
+    "indicator_name": "Physicians (per 1,000 people)",
+    "is_selected": true,
+    "blocks": "6",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SH.STA.MMRT",
+    "indicator_name": "Maternal mortality ratio",
+    "is_selected": false,
+    "blocks": "6",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SH.TBS.INCD",
+    "indicator_name": "Incidence of tuberculosis",
+    "is_selected": false,
+    "blocks": "6",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SH.XPD.CHEX.GD.ZS",
+    "indicator_name": "Current health expenditure (% of GDP)",
+    "is_selected": true,
+    "blocks": "6",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SH.XPD.CHEX.PC.CD",
+    "indicator_name": "Health expenditure per capita",
+    "is_selected": true,
+    "blocks": "6",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SH.XPD.OOPC.CH.ZS",
+    "indicator_name": "Out-of-pocket health expenditure (%)",
+    "is_selected": false,
+    "blocks": "6",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SI.DST.05TH.20",
+    "indicator_name": "Income share held by highest 20%",
+    "is_selected": false,
+    "blocks": "11",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SI.DST.10TH.10",
+    "indicator_name": "Income share held by highest 10%",
+    "is_selected": false,
+    "blocks": "11",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SI.DST.FRST.20",
+    "indicator_name": "Income share held by lowest 20%",
+    "is_selected": true,
+    "blocks": "11",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SI.POV.DDAY",
+    "indicator_name": "Poverty headcount $2.15/day (%)",
+    "is_selected": false,
+    "blocks": "11",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SI.POV.GINI",
+    "indicator_name": "Gini index",
+    "is_selected": false,
+    "blocks": "11",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SI.POV.LMIC",
+    "indicator_name": "Poverty headcount $3.65/day (%)",
+    "is_selected": false,
+    "blocks": "11",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SI.POV.UMIC",
+    "indicator_name": "Poverty headcount $6.85/day (%)",
+    "is_selected": false,
+    "blocks": "11",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SL.AGR.EMPL.ZS",
+    "indicator_name": "Employment in agriculture (%)",
+    "is_selected": false,
+    "blocks": "7",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SL.EMP.TOTL.SP.ZS",
+    "indicator_name": "Employment to population ratio (%)",
+    "is_selected": true,
+    "blocks": "7",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SL.EMP.VULN.ZS",
+    "indicator_name": "Vulnerable employment (%)",
+    "is_selected": false,
+    "blocks": "7",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SL.EMP.WORK.ZS",
+    "indicator_name": "Wage and salaried workers (%)",
+    "is_selected": true,
+    "blocks": "7",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SL.GDP.PCAP.EM.KD",
+    "indicator_name": "GDP per person employed",
+    "is_selected": true,
+    "blocks": "7",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SL.IND.EMPL.ZS",
+    "indicator_name": "Employment in industry (%)",
+    "is_selected": true,
+    "blocks": "7",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SL.SRV.EMPL.ZS",
+    "indicator_name": "Employment in services (%)",
+    "is_selected": true,
+    "blocks": "7",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SL.TLF.CACT.FE.ZS",
+    "indicator_name": "Labor force participation, female (%)",
+    "is_selected": true,
+    "blocks": "7,11",
+    "num_blocks": 2
+  },
+  {
+    "indicator_code": "SL.TLF.CACT.ZS",
+    "indicator_name": "Labor force participation rate (%)",
+    "is_selected": true,
+    "blocks": "7",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SL.UEM.1524.ZS",
+    "indicator_name": "Youth unemployment (%)",
+    "is_selected": false,
+    "blocks": "7",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SL.UEM.TOTL.FE.ZS",
+    "indicator_name": "Unemployment, female (%)",
+    "is_selected": false,
+    "blocks": "7",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SL.UEM.TOTL.ZS",
+    "indicator_name": "Unemployment, total (%)",
+    "is_selected": false,
+    "blocks": "7",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SP.DYN.IMRT.IN",
+    "indicator_name": "Infant mortality rate",
+    "is_selected": false,
+    "blocks": "6",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SP.DYN.LE00.FE.IN",
+    "indicator_name": "Life expectancy, female",
+    "is_selected": true,
+    "blocks": "11",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SP.DYN.LE00.IN",
+    "indicator_name": "Life expectancy at birth",
+    "is_selected": true,
+    "blocks": "6",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "SP.POP.TOTL",
+    "indicator_name": "Population, total",
+    "is_selected": true,
+    "blocks": "11",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "ST.INT.RCPT.XP.ZS",
+    "indicator_name": "International tourism receipts (% of total exports)",
+    "is_selected": true,
+    "blocks": "3",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "TM.TAX.MRCH.WM.AR.ZS",
+    "indicator_name": "Tariff rate, applied, weighted mean (%)",
+    "is_selected": false,
+    "blocks": "3",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "TM.VAL.MRCH.XD.WD",
+    "indicator_name": "Merchandise imports",
+    "is_selected": true,
+    "blocks": "3",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "TX.VAL.MRCH.XD.WD",
+    "indicator_name": "Merchandise exports",
+    "is_selected": true,
+    "blocks": "3",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "TX.VAL.TECH.MF.ZS",
+    "indicator_name": "High-technology exports (% of manufactured exports)",
+    "is_selected": true,
+    "blocks": "3",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "VA.EST",
+    "indicator_name": "Voice and Accountability: Estimate",
+    "is_selected": true,
+    "blocks": "9",
+    "num_blocks": 1
+  },
+  {
+    "indicator_code": "VA.PER.RNK",
+    "indicator_name": "Voice and Accountability: Percentile Rank",
+    "is_selected": true,
+    "blocks": "9",
+    "num_blocks": 1
+  }
+]

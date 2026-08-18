@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Methodology | FinSight</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0a0e14; --elev:#111820; --line:#1e2a3a; --text:#e8eef6; --muted:#9aa8bc; --dim:#6b7c91; --accent-t:#7ec4f0; }
+    body { margin:0; font-family:"DM Sans",system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.65; }
+    a { color:var(--accent-t); text-decoration:none; } a:hover { text-decoration:underline; }
+    .bar { border-bottom:1px solid var(--line); padding:16px 24px; font-size:13px; }
+    .bar a { color:var(--muted); }
+    .wrap { max-width:720px; margin:0 auto; padding:48px 24px 72px; }
+    .kicker { font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent-t); margin:0 0 12px; }
+    h1 { font-family:"Instrument Serif",Georgia,serif; font-weight:400; font-size:36px; margin:0 0 16px; line-height:1.2; }
+    h2 { font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--dim); margin:36px 0 10px; }
+    p,li { color:var(--muted); font-size:15px; }
+    ul { padding-left:1.2rem; }
+    .card { background:var(--elev); border:1px solid var(--line); border-radius:4px; padding:18px 20px; margin:14px 0; }
+    .card strong { color:var(--text); }
+    footer { border-top:1px solid var(--line); padding:20px 24px; font-size:11px; color:var(--dim); }
+  </style>
+</head>
+<body>
+  <div class="bar"><a href="./">← FinSight</a></div>
+  <div class="wrap">
+    <p class="kicker">Documentation</p>
+    <h1>Methodology</h1>
+    <p>FinSight is an educational market-intelligence workspace. It organises three separate analytical jobs under one brand. Rank models are never merged.</p>
+
+    <h2>Three separate models</h2>
+    <div class="card"><strong>Country ranking</strong> — Compares economies on multi-block indicators (macro, finance, infrastructure, social, and related dimensions). Output is a country score and rank. It does not rank sectors or stocks.</div>
+    <div class="card"><strong>Global equity universe</strong> — Organises listings by country, exchange, sector, and industry; supports company analysis and equity research packs. Classification is organisational, not a rank score.</div>
+    <div class="card"><strong>Sector &amp; industry intelligence</strong> — MSCI-style sector/industry structure plus offline multi-criteria ranks for sectors and stocks within sectors. These ranks are not country ranks.</div>
+
+    <h2>Company data preference</h2>
+    <p>Where live company data is requested, FinSight prefers public sources in order: primary scrape where available, yfinance, free public APIs, merged bundle fields, rule-based narrative synthesis, and offline country packs only as last resort when live sources are empty.</p>
+
+    <h2>Reports</h2>
+    <p>Equity research packs are structured educational documents assembled from available free data. Sensitivity tables, SWOT-style sections, and recommendation labels are illustrative heuristics—not target prices or personalised advice.</p>
+
+    <h2>Limitations</h2>
+    <ul>
+      <li>Free data may be incomplete, delayed, or inconsistent across secondary listings.</li>
+      <li>Offline ranks depend on the quality of the underlying workbook inputs.</li>
+      <li>Always reconcile material figures with primary exchange filings.</li>
+    </ul>
+  </div>
+  <footer>© All rights reserved FinSight prepared by Rudra Nath Sinha. · <a href="disclaimer.html">Disclaimer</a></footer>
+</body>
+</html>

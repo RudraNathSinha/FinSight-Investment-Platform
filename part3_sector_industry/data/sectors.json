@@ -1,0 +1,123 @@
+[
+  {
+    "Original_Name": "Energy",
+    "Final_Rank": 1,
+    "Ensemble_Score": 28.944444444444443,
+    "Mean_Rank_across_methods": 1.2222222222222223,
+    "Median_Rank": 1.0,
+    "Borda_Sum": 11,
+    "Condorcet_Wins": 10.0,
+    "Stability_Std": 0.4409585518440984,
+    "Sector": "Energy"
+  },
+  {
+    "Original_Name": "Information Technology",
+    "Final_Rank": 2,
+    "Ensemble_Score": 25.666666666666664,
+    "Mean_Rank_across_methods": 2.333333333333333,
+    "Median_Rank": 2.0,
+    "Borda_Sum": 21,
+    "Condorcet_Wins": 9.0,
+    "Stability_Std": 0.8660254037844387,
+    "Sector": "Technology"
+  },
+  {
+    "Original_Name": "Financials",
+    "Final_Rank": 3,
+    "Ensemble_Score": 21.30555555555556,
+    "Mean_Rank_across_methods": 3.7777777777777777,
+    "Median_Rank": 4.0,
+    "Borda_Sum": 34,
+    "Condorcet_Wins": 8.0,
+    "Stability_Std": 0.6666666666666667,
+    "Sector": "Financials"
+  },
+  {
+    "Original_Name": "Consumer Discretionary",
+    "Final_Rank": 4,
+    "Ensemble_Score": 18.83333333333333,
+    "Mean_Rank_across_methods": 4.666666666666667,
+    "Median_Rank": 4.0,
+    "Borda_Sum": 42,
+    "Condorcet_Wins": 7.0,
+    "Stability_Std": 3.0,
+    "Sector": "Consumer Discretionary"
+  },
+  {
+    "Original_Name": "Utilities",
+    "Final_Rank": 5,
+    "Ensemble_Score": 12.0,
+    "Mean_Rank_across_methods": 7.0,
+    "Median_Rank": 7.0,
+    "Borda_Sum": 63,
+    "Condorcet_Wins": 6.0,
+    "Stability_Std": 1.5,
+    "Sector": "Utilities"
+  },
+  {
+    "Original_Name": "Materials",
+    "Final_Rank": 6,
+    "Ensemble_Score": 11.75,
+    "Mean_Rank_across_methods": 7.0,
+    "Median_Rank": 7.0,
+    "Borda_Sum": 63,
+    "Condorcet_Wins": 5.0,
+    "Stability_Std": 2.29128784747792,
+    "Sector": "Materials"
+  },
+  {
+    "Original_Name": "Industrials",
+    "Final_Rank": 7,
+    "Ensemble_Score": 11.5,
+    "Mean_Rank_across_methods": 7.0,
+    "Median_Rank": 7.0,
+    "Borda_Sum": 63,
+    "Condorcet_Wins": 4.0,
+    "Stability_Std": 2.29128784747792,
+    "Sector": "Industrials"
+  },
+  {
+    "Original_Name": "Communication Services",
+    "Final_Rank": 8,
+    "Ensemble_Score": 9.333333333333332,
+    "Mean_Rank_across_methods": 7.666666666666667,
+    "Median_Rank": 8.0,
+    "Borda_Sum": 69,
+    "Condorcet_Wins": 3.0,
+    "Stability_Std": 1.414213562373095,
+    "Sector": "Communication Services"
+  },
+  {
+    "Original_Name": "Real Estate",
+    "Final_Rank": 9,
+    "Ensemble_Score": 8.055555555555555,
+    "Mean_Rank_across_methods": 7.777777777777778,
+    "Median_Rank": 10.0,
+    "Borda_Sum": 70,
+    "Condorcet_Wins": 1.0,
+    "Stability_Std": 3.3458099833141217,
+    "Sector": "Real Estate"
+  },
+  {
+    "Original_Name": "Health Care",
+    "Final_Rank": 10,
+    "Ensemble_Score": 7.444444444444445,
+    "Mean_Rank_across_methods": 8.222222222222221,
+    "Median_Rank": 9.0,
+    "Borda_Sum": 74,
+    "Condorcet_Wins": 2.0,
+    "Stability_Std": 2.279132388529557,
+    "Sector": "Healthcare"
+  },
+  {
+    "Original_Name": "Consumer Staples",
+    "Final_Rank": 11,
+    "Ensemble_Score": 3.6666666666666665,
+    "Mean_Rank_across_methods": 9.333333333333334,
+    "Median_Rank": 11.0,
+    "Borda_Sum": 84,
+    "Condorcet_Wins": 0.0,
+    "Stability_Std": 2.39791576165636,
+    "Sector": "Consumer Staples"
+  }
+]
