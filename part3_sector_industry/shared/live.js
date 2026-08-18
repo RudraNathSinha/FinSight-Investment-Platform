@@ -3,15 +3,27 @@
 
 (function (global) {
   const DEFAULT_BASE = (function () {
-    try {
-      if (typeof location !== 'undefined' && location.port === '5000') return '';
-      // file:// or other static hosts → talk to local Flask
-      if (typeof location !== 'undefined' && (location.protocol === 'file:' || location.port === '' || location.port === '5500' || location.port === '8080')) {
-        return 'http://127.0.0.1:5000';
-      }
-    } catch (_) {}
-    return '';
-  })();
+  try {
+    if (typeof location !== 'undefined' && location.port === '5000') {
+      return '';
+    }
+
+    // Local development only
+    if (
+      typeof location !== 'undefined' &&
+      (
+        location.protocol === 'file:' ||
+        location.port === '5500' ||
+        location.port === '8080'
+      )
+    ) {
+      return 'http://127.0.0.1:5000';
+    }
+  } catch (_) {}
+
+  // Production / Render: same-origin API
+  return '';
+})();
 
   const BASE = global.FINSIGHT_LIVE_BASE != null ? global.FINSIGHT_LIVE_BASE : DEFAULT_BASE;
 
